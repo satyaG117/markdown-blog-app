@@ -1,0 +1,34 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/form-validation.css">
+
+<div class="row mb-4">
+    <div class="col-lg-8 offset-lg-2">
+        <h2>Create a post</h2>
+        <form method="post" action="/posts" id="post-form">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="post[title]">
+                <p id="message" class="my-3"></p>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <p id="message" class="my-3"></p>
+                <textarea name="post[description]" id="description" cols="10" rows="3" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <div class="mb-3">
+                    <label for="">This field supports markdown input</label>
+                    
+                    <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Guide</a>
+                </div>
+                <label for="text" class="form-label">Text</label>
+                <p id="message" class="my-3"></p>
+                <textarea name="post[text]" id="text" cols="10" rows="10"  class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script defer src="/scripts/post-validation.js"></script>
+    

@@ -1,0 +1,15 @@
+.error{
+    color: red;
+}
+
+.success{
+    color : green;
+}
+
+.error-field{
+    border : 1px solid red;
+}
+
+.success-field{
+    border : 1px solid green;
+}

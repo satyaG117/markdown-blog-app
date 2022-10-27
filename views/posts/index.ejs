@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') %>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+
+                <% for(let post of results.posts){ %>
+                    <a href="/posts/<%= post._id %>" class="card-link">
+
+                        <div class="card border-dark mb-3" >
+                            <div class="card-header card-title">
+                                <h5>
+                                    <%= post.title %>
+                                </h5>
+                                <p class="text-muted">
+                                    <%= post.created.toLocaleDateString() %>
+                                </p>
+                            </div>
+                            <div class="card-body text-dark">
+                                <p class="card-text">
+                                    <%= post.description %>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <% } %>
+            </div>
+            <div class="row">
+
+                <div class="col d-flex flex-row justify-content-around my-5">
+                    <% if(results.prev){ %>
+                        <a href="/posts?page=<%= results.prev %>" class="btn btn-primary btn-small">Previous</a>
+                        <% } %>
+                            <% if(results.next){ %>
+
+                                <a href="/posts?page=<%= results.next %>" class="btn btn-primary btn-small">Next</a>
+                                <% } %>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>

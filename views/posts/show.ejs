@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate.ejs') %> 
+<!-- <h1>Show page</h1> -->
+<!-- Modal -->
+<div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this post ? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <form action="/posts/<%= post._id %>?_method=DELETE" method="post">
+          <button type="submit" class="btn btn-danger">Yes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal ends  -->
+
+<div class="card mb-3 border-dark" >
+    <div class="row g-0">
+      <div class="col-md-10">
+        <div class="card-body">
+          <h1 class="card-title"><%= post.title %> </h1>
+          <p class="text-muted"><%= post.description %></p>
+          <p class="text-muted">By : <%= post.author.username %></p>
+          <p class="text-muted"><%= post.created.toLocaleDateString() %></p>
+          <% if(currentUser && post.author.equals(currentUser)) {%>
+            <a href="/posts/<%= post._id %>/edit" class="btn btn-warning">Edit</a>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete">
+              Delete
+            </button>
+            
+          <% } %>  
+          <hr>
+          <div>
+
+            <%- post.markdown %> 
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
